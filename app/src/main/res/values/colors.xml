@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#E6FFFFFF</color>
+    <color name="primary_color">#084035</color>
+    <color name="light_color">#3EA997</color>
+    <color name="border_color">#affc41</color>
+
+    <color name="first">#E6FFADAD</color>
+    <color name="second">#E6FFD6A5</color>
+    <color name="third">#E6FDFFB6</color>
+    <color name="fourth">#E6caffbf</color>
+    <color name="fifth">#E69bf6ff</color>
+    <color name="sixth">#E6a0c4ff</color>
+    <color name="seventh">#E6bdb2ff</color>
+    <color name="eigthth">#E6ffc6ff</color>
+    <color name="nineth">#E6fffffc</color>
+
+</resources>

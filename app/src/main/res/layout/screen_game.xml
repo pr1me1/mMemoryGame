@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_game">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/level_holder"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:layout_marginHorizontal="48dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+
+        <TextView
+            android:id="@+id/tv_level"
+            style="@style/text_style"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.454"
+            tools:text="medium" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        style="@style/text_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level"
+        android:textSize="32sp"
+        app:layout_constraintLeft_toLeftOf="@id/level_holder"
+        app:layout_constraintRight_toRightOf="@id/level_holder"
+        app:layout_constraintTop_toBottomOf="@id/level_holder" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/attempt_holder"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:layout_marginHorizontal="48dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_text"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_attempt"
+            style="@style/text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.4"
+            android:text="0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/attempts"
+        style="@style/text_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Attempts"
+        android:textSize="32sp"
+        app:layout_constraintLeft_toLeftOf="@id/attempt_holder"
+        app:layout_constraintRight_toRightOf="@id/attempt_holder"
+        app:layout_constraintTop_toBottomOf="@id/attempt_holder" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/card_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="56dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="4:6"
+        app:layout_constraintTop_toBottomOf="@id/attempts">
+
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/btn_home"
+            android:elevation="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:lottie_rawRes="@raw/btn_home"
+            android:padding="24dp"
+            android:background="?selectableItemBackground"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            android:visibility="gone"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/volume_state"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:layout_constraintTop_toBottomOf="@id/card_container"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:src="@drawable/ic_mute"
+        android:background="?android:selectableItemBackground"
+        app:layout_constraintRight_toLeftOf="@id/btn_restart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:tint="@color/white"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btn_restart"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="?android:selectableItemBackground"
+        android:padding="4dp"
+        app:layout_constraintTop_toBottomOf="@id/card_container"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/volume_state"
+        android:src="@drawable/ic_restart"
+        android:tint="@color/white"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

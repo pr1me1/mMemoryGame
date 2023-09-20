@@ -1,0 +1,6 @@
+<resources>
+    <declare-styleable name="CardHolder">
+        <attr name="borderColor" format="color"/>
+        <attr name="fieldColor" format="color"/>
+    </declare-styleable>
+</resources>
