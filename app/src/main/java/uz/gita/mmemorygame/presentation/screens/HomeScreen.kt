@@ -52,8 +52,6 @@ class HomeScreen : Fragment(R.layout.screen_home) {
 
 
     private fun controlSound() {
-
-
         binding.volumeState.setOnClickListener {
             if (shared.getVolumeState()) {
                 backgroundSound.setVolume(0f, 0f)
@@ -232,13 +230,15 @@ class HomeScreen : Fragment(R.layout.screen_home) {
 
     override fun onPause() {
         super.onPause()
-        backgroundSound.stop()
+        backgroundSound.setVolume(0f,0f)
     }
 
 
     override fun onResume() {
         super.onResume()
-        backgroundSound.start()
+        if(shared.getVolumeState()) {
+            backgroundSound.setVolume(1f, 1f)
+        }
     }
 
 

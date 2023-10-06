@@ -14,7 +14,8 @@
         android:padding="10dp"
         android:src="@drawable/ic_back"
         android:background="?android:selectableItemBackground"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/volume_state"
+        app:layout_constraintBottom_toBottomOf="@id/volume_state"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_margin="12dp"/>
 
@@ -114,7 +115,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="48dp"
         android:text="Info"
         style="@style/text_style"/>
 
@@ -128,7 +129,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.95"
+        app:layout_constraintVertical_bias="0.05"
         app:layout_constraintHorizontal_bias="0.95"
         android:src="@drawable/ic_volume_up"
         android:background="?android:selectableItemBackground"

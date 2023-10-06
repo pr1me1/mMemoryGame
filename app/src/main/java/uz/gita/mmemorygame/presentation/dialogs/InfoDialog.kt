@@ -6,14 +6,16 @@ import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.speech.tts.TextToSpeech.OnInitListener
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
+import kotlinx.coroutines.flow.Flow
 import uz.gita.mmemorygame.R
-import uz.gita.mmemorygame.app.App
 import uz.gita.mmemorygame.data.models.CardData
 import uz.gita.mmemorygame.databinding.DialogInfoBinding
 import uz.gita.mmemorygame.utils.debounce
@@ -67,10 +69,13 @@ class InfoDialog : DialogFragment(R.layout.dialog_info), OnInitListener {
 
     override fun onResume() {
         super.onResume()
-        dialog!!.window!!.setLayout(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
+
+
+        dialog!!.window!!.attributes.gravity= Gravity.CENTER
+        val layoutParams: WindowManager.LayoutParams = dialog!!.getWindow()!!.getAttributes()
+
+        layoutParams.width = 850
+
         dialog!!.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
@@ -98,4 +103,7 @@ class InfoDialog : DialogFragment(R.layout.dialog_info), OnInitListener {
             }
         this.setOnClickListener(clickWithDebounce)
     }
+
 }
+
+

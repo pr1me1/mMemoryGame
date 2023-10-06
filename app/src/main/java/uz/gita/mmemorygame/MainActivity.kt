@@ -3,6 +3,7 @@ package uz.gita.mmemorygame
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.core.view.WindowCompat
 import androidx.fragment.app.FragmentContainerView
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
@@ -20,6 +21,14 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        WindowCompat.setDecorFitsSystemWindows(
+            window,
+            false
+        )
+
+
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         val containerView = findViewById<FragmentContainerView>(R.id.navHost)
         val navController = containerView.getFragment<NavHostFragment>().navController

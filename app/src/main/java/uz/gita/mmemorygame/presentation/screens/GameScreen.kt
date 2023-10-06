@@ -4,9 +4,9 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.View
 import android.view.View.GONE
+import android.view.WindowManager
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -15,7 +15,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
-import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import uz.gita.mmemorygame.R
@@ -31,6 +30,7 @@ import uz.gita.mmemorygame.presentation.viewmodels.impl.GameViewModelImpl
 import uz.gita.mmemorygame.utils.closeCard
 import uz.gita.mmemorygame.utils.hideCard
 import uz.gita.mmemorygame.utils.openCard
+
 
 class GameScreen : Fragment(R.layout.screen_game) {
     private val binding by viewBinding(ScreenGameBinding::bind)
@@ -80,6 +80,7 @@ class GameScreen : Fragment(R.layout.screen_game) {
             findNavController().popBackStack()
         }
 
+
         binding.btnRestart.setOnClickListener {
             lifecycleScope.launch{ clearCards() }
             cards.clear()
@@ -94,6 +95,8 @@ class GameScreen : Fragment(R.layout.screen_game) {
         controlSound()
 
     }
+
+
 
     private suspend fun clearCards() {
 
@@ -181,7 +184,13 @@ class GameScreen : Fragment(R.layout.screen_game) {
             val info = InfoDialog()
             find.start()
             info.arguments = bundleOf("data" to (cards[firstCard].tag as CardData))
+            backgroundSound.setVolume(0.5f, 0.5f)
             info.show(parentFragmentManager, null)
+
+            if (info.isDetached) {
+                backgroundSound.setVolume(1f, 1f)
+            }
+
             Handler(Looper.getMainLooper()).postDelayed({
                 cards[firstCard].hideCard {}
                 cards[secondCard].hideCard {
@@ -210,6 +219,7 @@ class GameScreen : Fragment(R.layout.screen_game) {
 
     private suspend fun openFirstCard(card: CardHolder, index: Int) {
         isClicked = true
+        binding.btnRestart.isEnabled = false
         pop.start()
         firstCard = index
         viewModel.click()
@@ -219,14 +229,17 @@ class GameScreen : Fragment(R.layout.screen_game) {
     }
 
     private suspend fun openSecondCard(card: CardHolder, index: Int) {
+        secondCard = index
         if (isClicked) {
             delay(400)
         }
-        secondCard = index
+
         viewModel.click()
         card.openCard {
             check()
         }
+        delay(200)
+        binding.btnRestart.isEnabled = true
         pop.start()
 
     }
@@ -234,7 +247,14 @@ class GameScreen : Fragment(R.layout.screen_game) {
 
     override fun onPause() {
         super.onPause()
-        backgroundSound.stop()
+        backgroundSound.setVolume(0f,0f)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (shared.getVolumeState()) {
+            backgroundSound.setVolume(1f,1f)
+        }
     }
 
 }
